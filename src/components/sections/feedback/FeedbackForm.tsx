@@ -56,7 +56,7 @@ const INITIAL_FORM: FormState = {
   message: '',
 }
 
-const BUSINESS_MAIL = 'xeusnguyen@wxops.cloud'
+const BUSINESS_MAIL = process.env.NEXT_PUBLIC_BUSINESS_MAIL ?? 'contact@wxops.cloud'
 
 /* ── Helpers ──────────────────────────────────────────────────── */
 function isValidEmail(email: string) {
