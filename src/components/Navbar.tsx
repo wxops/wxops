@@ -9,7 +9,8 @@ const navLinks = [
   { label: 'Golden Path', href: '/#golden-path' },
   { label: 'Features', href: '/#features' },
   { label: 'Architecture', href: '/#architecture' },
-  { label: 'Feedback', href: '/feedback' },
+  { label: 'Enterprise', href: '/enterprise' },
+  { label: 'Docs', href: 'https://docs.wxops.cloud', external: true },
 ]
 
 export function Navbar() {
@@ -26,7 +27,7 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#050308]/80 backdrop-blur-xl border-b border-white/[0.06]'
+          ? 'bg-[#282a36]/80 backdrop-blur-xl border-b border-white/[0.06]'
           : 'bg-transparent'
       }`}
     >
@@ -60,6 +61,8 @@ export function Navbar() {
               <li key={link.label}>
                 <a
                   href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
                   className="px-4 py-2 text-sm text-slate-400 hover:text-white rounded-lg hover:bg-white/[0.06] transition-all duration-200"
                 >
                   {link.label}
@@ -84,7 +87,7 @@ export function Navbar() {
               GitHub <ExternalLink className="w-3.5 h-3.5" />
             </a>
             <a
-              href="/feedback"
+              href="/enterprise"
               className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg text-white hover:opacity-90 transition-opacity"
             >
               Get Early Access
@@ -109,13 +112,15 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#050308]/95 backdrop-blur-xl border-b border-white/[0.06]"
+            className="md:hidden bg-[#282a36]/95 backdrop-blur-xl border-b border-white/[0.06]"
           >
             <div className="section-container py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
                   onClick={() => setMobileOpen(false)}
                   className="px-4 py-3 text-slate-400 hover:text-white hover:bg-white/[0.06] rounded-lg transition-all"
                 >
@@ -123,7 +128,7 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="/feedback"
+                href="/enterprise"
                 onClick={() => setMobileOpen(false)}
                 className="mt-2 px-4 py-3 text-center font-medium bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg text-white"
               >

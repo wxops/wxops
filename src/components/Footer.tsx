@@ -1,6 +1,6 @@
 'use client'
 
-import { Layers, Github, Globe, Heart } from 'lucide-react'
+import { Github, Mail, Heart } from 'lucide-react'
 import Image from 'next/image'
 
 const footerLinks = {
@@ -9,17 +9,19 @@ const footerLinks = {
     { label: 'Service Catalog', href: '#features' },
     { label: 'Identity & Access', href: '#features' },
     { label: 'CI/CD Pipelines', href: '#features' },
+    { label: 'Enterprise', href: '/enterprise' },
+    { label: 'Docs', href: 'https://docs.wxops.cloud', external: true },
   ],
   'Open Source': [
-    { label: 'Backstage', href: 'https://backstage.io', external: true },
-    { label: 'Terraform', href: 'https://terraform.io', external: true },
+    { label: 'Kubernetes', href: 'https://kubernetes.io', external: true },
+    { label: 'Crossplane', href: 'https://www.crossplane.io', external: true },
     { label: 'ArgoCD', href: 'https://argoproj.github.io/argo-cd', external: true },
   ],
 }
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] bg-[#050308]">
+    <footer className="border-t border-white/[0.06] bg-[#282a36]">
       <div className="section-container py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
@@ -45,11 +47,11 @@ export function Footer() {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="mailto:contact@wxops.cloud"
                 className="p-2 text-slate-500 hover:text-white rounded-lg hover:bg-white/[0.06] transition-all"
-                aria-label="Website"
+                aria-label="Email"
               >
-                <Globe className="w-4 h-4" />
+                <Mail className="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -78,10 +80,10 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-slate-600">
-            © {new Date().getFullYear()} W&apos;xOps. Open source under MIT License.
+          <p className="text-sm text-slate-400">
+            © {new Date().getFullYear()} <span className="font-bold">W&apos;xOps. Open source under MIT License.</span>
           </p>
-          <p className="text-sm text-slate-600 flex items-center gap-1.5">
+          <p className="text-sm text-slate-400 flex items-center gap-1.5">
             Built with <Heart className="w-3.5 h-3.5 text-rose-500" /> by
             W'xOps Team from Vietnam 🇻🇳
           </p>

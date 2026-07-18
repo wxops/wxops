@@ -1,16 +1,16 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { MessageSquare, Zap, Users, GitPullRequest } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Database, GitPullRequest, KeyRound } from 'lucide-react'
 
 const stats = [
-  { icon: Users, value: 'Open', label: 'Early Access' },
-  { icon: MessageSquare, value: '3', label: 'Issue Templates' },
-  { icon: GitPullRequest, value: '100%', label: 'Open Source' },
-  { icon: Zap, value: 'Free', label: 'MVP Demo' },
+  { icon: ShieldCheck, value: 'Self-Hosted', label: 'Runs Inside Your Infra' },
+  { icon: Database, value: '0', label: 'Databases to Secure' },
+  { icon: GitPullRequest, value: '100%', label: 'Changes via Git PR' },
+  { icon: KeyRound, value: '1', label: 'Token — Portal + kubectl + CI' },
 ]
 
-export function FeedbackHero() {
+export function EnterpriseHero() {
   return (
     <section className="relative pt-28 pb-16 overflow-hidden">
       {/* Glow */}
@@ -23,13 +23,13 @@ export function FeedbackHero() {
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4 }}
-          className="flex items-center gap-2 text-sm text-slate-600 mb-8"
+          className="flex items-center gap-2 text-sm text-slate-400 mb-8"
         >
           <a href="/" className="hover:text-slate-400 transition-colors">
             W&apos;xOps IDP
           </a>
           <span>/</span>
-          <span className="text-slate-400">Feedback</span>
+          <span className="text-slate-400">Enterprise</span>
         </motion.div>
 
         {/* Badge */}
@@ -40,7 +40,7 @@ export function FeedbackHero() {
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium mb-6"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 dot-active" />
-          Early Access Programme — Accepting Feedback
+          For Platform, Security &amp; Engineering Leadership
         </motion.div>
 
         {/* Headline */}
@@ -50,8 +50,8 @@ export function FeedbackHero() {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-4 max-w-3xl"
         >
-          Help Shape the{' '}
-          <span className="text-gradient">Platform</span>
+          Runs Inside{' '}
+          <span className="text-gradient">Your Infrastructure</span>
         </motion.h1>
 
         <motion.p
@@ -60,10 +60,33 @@ export function FeedbackHero() {
           transition={{ duration: 0.7, delay: 0.25 }}
           className="text-slate-400 text-lg max-w-2xl mb-10 leading-relaxed"
         >
-          Your feedback directly influences what we build next. Open a GitHub
-          ticket from a template, join the public discussion via Giscus, or send
-          us a private note — and be first in line for a free demo when we launch.
+          Self-hosted, single binary, no database to patch or breach. Every
+          configuration change is a reviewable Git PR. Request a demo and
+          we&apos;ll walk through the architecture, security model, and
+          deployment plan for your team.
         </motion.p>
+
+        {/* CTA row */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="flex flex-col sm:flex-row gap-4 mb-10"
+        >
+          <a
+            href="#enterprise-form"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl text-white font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:opacity-95 transition-all duration-200"
+          >
+            Request a Demo
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
+          <a
+            href="#enterprise-faq"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 glass-hover rounded-xl text-white font-semibold"
+          >
+            Read the FAQ
+          </a>
+        </motion.div>
 
         {/* Stats row */}
         <motion.div

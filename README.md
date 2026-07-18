@@ -1,53 +1,36 @@
-# wxops.cloud — W'xOps IDP Landing Page
+<p align="center">
+  <img src="public/thumbnail.png" alt="W'xOps — you own your infrastructure, you own your platform" width="600">
+</p>
 
-The official showcase website for **W'xOps Internal Developer Portal** — built on Platform Engineering principles with the Golden Path.
+# W'xOps — Internal Developer Portal
 
-## Stack
+W'xOps is a self-hosted Internal Developer Portal built around the Golden
+Path — one place for developers to onboard, ship, and operate services
+without waiting on tickets or juggling a dozen tools.
 
-- **Next.js 14** — App Router, TypeScript, static export (`output: 'export'`)
-- **Tailwind CSS** — utility-first styling with custom theme
-- **Framer Motion** — scroll-triggered animations & transitions
-- **Lucide React** — icon system
-- **Canvas API** — particle network hero background
+## What makes it different
 
-## Sections
+- **No database.** Git is the source of truth for the catalog and
+  configuration — nothing to patch, back up, or leak.
+- **One identity, everywhere.** A single token works for the portal,
+  `kubectl`, and CI — no second login, no separate permission system to
+  maintain.
+- **100% GitOps.** Every change is a reviewable Git PR. The portal never
+  writes directly to your cluster.
+- **One lightweight binary.** No plugin ecosystem, no Node.js + database
+  stack to operate — just a single Go binary with the frontend built in.
+- **Runs inside your infrastructure.** Self-hosted by design — your data
+  never leaves your environment.
 
-| Section | Description |
-|---|---|
-| Hero | Animated particle canvas, headline, stat counters |
-| Golden Path | Platform Engineering flow visualization + core principles |
-| Metrics | Evidence-backed before/after metrics with animated counters |
-| Features | 6-card IDP capability grid (Identity, Onboarding, Catalog, …) |
-| Architecture | Layered technical stack diagram + full tech pills |
-| CTA | Call-to-action with benefits checklist |
+This site (`wxops.cloud`) is the project's marketing landing page and links
+through to the [full documentation](https://docs.wxops.cloud).
 
-## Development
+## Contact
 
-```bash
-# Install dependencies
-npm install
+Questions, feedback, or interested in running W'xOps for your team? Reach out
+at **contact@wxops.cloud**, or use the demo request form on the
+[Enterprise page](https://wxops.cloud/enterprise).
 
-# Start dev server
-npm run dev            # → http://localhost:3000
+## License
 
-# Build static export
-npm run build          # → ./out/
-```
-
-## Docker
-
-```bash
-# Production — build image and serve with Nginx
-docker compose --profile prod up --build
-
-# Dev server inside Docker
-docker compose --profile dev up
-```
-
-## GitHub Pages
-
-Push to `main` and the [deploy workflow](.github/workflows/deploy.yml) builds the static export and publishes it automatically.
-
-> If deploying to a sub-path (e.g. `username.github.io/wxops.cloud`), set
-> `NEXT_PUBLIC_BASE_PATH=/wxops.cloud` in the workflow env.
-
+MIT — see [LICENSE](LICENSE).

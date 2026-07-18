@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-bg: #050308;
+  /* Dracula (https://github.com/dracula/dracula-theme) */
+  --color-bg: #282a36;
   --color-surface: rgba(255, 255, 255, 0.04);
   --color-border: rgba(255, 255, 255, 0.08);
-  --color-indigo: #6366f1;
-  --color-purple: #8b5cf6;
-  --color-cyan: #06b6d4;
-  --color-green: #10b981;
+  --color-purple: #bd93f9;
+  --color-pink: #ff79c6;
+  --color-cyan: #8be9fd;
+  --color-green: #50fa7b;
 }
 
 @layer base {
@@ -27,14 +28,15 @@
 
   body {
     background-color: var(--color-bg);
-    color: #f1f5f9;
-    font-family: 'Inter', system-ui, sans-serif;
+    color: #f8f8f2;
+    font-family: 'Fira Code', monospace;
+    font-feature-settings: 'liga' 1, 'calt' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background: rgba(99, 102, 241, 0.3);
+    background: rgba(189, 147, 249, 0.3);
     color: #fff;
   }
 
@@ -43,11 +45,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #050308;
+    background: #282a36;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(99, 102, 241, 0.4);
+    background: rgba(189, 147, 249, 0.4);
     border-radius: 3px;
   }
 }
@@ -73,15 +75,15 @@
   }
 
   .glow-indigo {
-    box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
+    box-shadow: 0 0 40px rgba(189, 147, 249, 0.15);
   }
 
   .glow-purple {
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+    box-shadow: 0 0 40px rgba(255, 121, 198, 0.15);
   }
 
   .glow-cyan {
-    box-shadow: 0 0 40px rgba(6, 182, 212, 0.15);
+    box-shadow: 0 0 40px rgba(139, 233, 253, 0.15);
   }
 
   .section-container {
@@ -97,24 +99,24 @@
 .gradient-bg {
   background: radial-gradient(
       ellipse 80% 60% at 50% -20%,
-      rgba(99, 102, 241, 0.18) 0%,
+      rgba(189, 147, 249, 0.18) 0%,
       transparent 60%
     ),
     radial-gradient(
       ellipse 60% 40% at 80% 80%,
-      rgba(139, 92, 246, 0.1) 0%,
+      rgba(255, 121, 198, 0.1) 0%,
       transparent 50%
     ),
     radial-gradient(
       ellipse 50% 40% at 20% 100%,
-      rgba(6, 182, 212, 0.08) 0%,
+      rgba(139, 233, 253, 0.08) 0%,
       transparent 50%
     );
 }
 
 /* Grid pattern overlay */
 .grid-overlay {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(99 102 241 / 0.06)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(189 147 249 / 0.06)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
 }
 
 /* Glowing border gradient */
@@ -130,9 +132,9 @@
   padding: 1px;
   background: linear-gradient(
     135deg,
-    rgba(99, 102, 241, 0.5),
-    rgba(139, 92, 246, 0.5),
-    rgba(6, 182, 212, 0.5)
+    rgba(189, 147, 249, 0.5),
+    rgba(255, 121, 198, 0.5),
+    rgba(139, 233, 253, 0.5)
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -143,9 +145,9 @@
 
 /* Terminal/code style */
 .terminal {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Fira Code', monospace;
   background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(189, 147, 249, 0.2);
   border-radius: 12px;
 }
 
@@ -161,11 +163,11 @@
 
 /* Neon text glow */
 .neon-indigo {
-  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5), 0 0 40px rgba(99, 102, 241, 0.3);
+  text-shadow: 0 0 20px rgba(189, 147, 249, 0.5), 0 0 40px rgba(189, 147, 249, 0.3);
 }
 
 .neon-cyan {
-  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.3);
+  text-shadow: 0 0 20px rgba(139, 233, 253, 0.5), 0 0 40px rgba(139, 233, 253, 0.3);
 }
 
 /* Path drawing animation */
@@ -195,4 +197,13 @@
   );
   background-size: 200% auto;
   animation: shimmer 3s linear infinite;
+}
+
+/* Light "paper" frame for embedded diagrams (Excalidraw-style assets have a
+   white background — this keeps them readable against the dark theme). */
+.diagram-frame {
+  background: #f8f8f2;
+  border-radius: 16px;
+  border: 1px solid rgba(139, 233, 253, 0.25);
+  box-shadow: 0 0 60px rgba(189, 147, 249, 0.12);
 }

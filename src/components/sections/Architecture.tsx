@@ -15,6 +15,8 @@ import {
   BookOpen,
   Cpu,
   Network,
+  Boxes,
+  HardDrive,
 } from 'lucide-react'
 
 /* ──────────────────────────────────────────────
@@ -29,11 +31,11 @@ const layers = [
     labelColor: 'text-indigo-300',
     dotColor: 'bg-indigo-400',
     tools: [
-      { name: 'Portal UI', icon: Globe, desc: 'Backstage-powered developer portal' },
+      { name: 'Portal UI', icon: Globe, desc: 'Go + Next.js — single binary, nginx-routed' },
       { name: 'Service Catalog', icon: BookOpen, desc: 'Discover & deploy internal services' },
-      { name: 'Self-Service CLI', icon: FileCode2, desc: 'Golden Path scaffolding' },
-      { name: 'Docs as Code', icon: Layers, desc: 'TechDocs — always up to date' },
-      { name: 'Team Management', icon: Users, desc: 'RBAC & ownership via portal' },
+      { name: 'Self-Service CLI', icon: FileCode2, desc: 'Golden Path scaffolding + Darlane' },
+      { name: 'Docs as Code', icon: Layers, desc: 'RFC / ADR / Runbook linked per entity' },
+      { name: 'Team Management', icon: Users, desc: 'Ownership & RBAC via Pinniped groups' },
     ],
   },
   {
@@ -44,11 +46,12 @@ const layers = [
     labelColor: 'text-purple-300',
     dotColor: 'bg-purple-400',
     tools: [
-      { name: 'Identity (SSO)', icon: Lock, desc: 'Keycloak / Okta / Azure AD' },
-      { name: 'CI/CD', icon: GitBranch, desc: 'GitHub Actions + ArgoCD' },
-      { name: 'Secret Management', icon: Database, desc: 'HashiCorp Vault' },
-      { name: 'Policy Engine', icon: FileCode2, desc: 'OPA + Conftest' },
-      { name: 'Container Registry', icon: Container, desc: 'Harbor / ECR' },
+      { name: 'Identity', icon: Lock, desc: 'Pinniped — one token for portal + kubectl' },
+      { name: 'CI/CD', icon: GitBranch, desc: 'Gitea Actions + ArgoCD GitOps' },
+      { name: 'Provisioning', icon: Boxes, desc: 'Crossplane — XTenantApp / XTenantDatabase' },
+      { name: 'Secret Management', icon: Database, desc: 'HashiCorp Vault — write-only' },
+      { name: 'Policy Engine', icon: FileCode2, desc: 'Kyverno ClusterPolicies' },
+      { name: 'Registry', icon: Container, desc: 'Gitea Registry' },
     ],
   },
   {
@@ -60,27 +63,25 @@ const layers = [
     dotColor: 'bg-cyan-400',
     tools: [
       { name: 'Kubernetes', icon: Cpu, desc: 'Multi-cluster, multi-env' },
-      { name: 'Terraform IaC', icon: FileCode2, desc: 'Infrastructure as Code' },
-      { name: 'Service Mesh', icon: Network, desc: 'Istio — mTLS + traffic mgmt' },
-      { name: 'Observability', icon: BarChart3, desc: 'Grafana + Prometheus + Loki + Jaeger' },
-      { name: 'Cloud Providers', icon: Globe, desc: 'AWS / GCP / Azure / On-prem' },
+      { name: 'Kustomize', icon: FileCode2, desc: 'Overlay-based config, per environment' },
+      { name: 'Ingress', icon: Network, desc: 'Traefik — traffic split for Darlane' },
+      { name: 'Observability', icon: BarChart3, desc: 'Grafana Alloy + Loki + Tempo + Pyroscope' },
+      { name: 'Data Layer', icon: HardDrive, desc: 'CloudNativePG · SeaweedFS' },
     ],
   },
 ]
 
 const techStack = [
-  { name: 'Backstage', category: 'Portal', color: 'text-indigo-300', bg: 'bg-indigo-500/10', border: 'border-indigo-500/20' },
-  { name: 'Keycloak', category: 'Identity', color: 'text-blue-300', bg: 'bg-blue-500/10', border: 'border-blue-500/20' },
+  { name: 'Pinniped', category: 'Identity', color: 'text-indigo-300', bg: 'bg-indigo-500/10', border: 'border-indigo-500/20' },
+  { name: 'Gitea', category: 'Git / CI / Registry', color: 'text-teal-300', bg: 'bg-teal-500/10', border: 'border-teal-500/20' },
   { name: 'ArgoCD', category: 'GitOps', color: 'text-orange-300', bg: 'bg-orange-500/10', border: 'border-orange-500/20' },
+  { name: 'Crossplane', category: 'Provisioning', color: 'text-blue-300', bg: 'bg-blue-500/10', border: 'border-blue-500/20' },
+  { name: 'Kyverno', category: 'Policy', color: 'text-red-300', bg: 'bg-red-500/10', border: 'border-red-500/20' },
   { name: 'HashiCorp Vault', category: 'Secrets', color: 'text-yellow-300', bg: 'bg-yellow-500/10', border: 'border-yellow-500/20' },
-  { name: 'OPA / Conftest', category: 'Policy', color: 'text-red-300', bg: 'bg-red-500/10', border: 'border-red-500/20' },
   { name: 'Kubernetes', category: 'Runtime', color: 'text-cyan-300', bg: 'bg-cyan-500/10', border: 'border-cyan-500/20' },
-  { name: 'Terraform', category: 'IaC', color: 'text-purple-300', bg: 'bg-purple-500/10', border: 'border-purple-500/20' },
+  { name: 'Kustomize', category: 'Config', color: 'text-purple-300', bg: 'bg-purple-500/10', border: 'border-purple-500/20' },
+  { name: 'Traefik', category: 'Ingress', color: 'text-violet-300', bg: 'bg-violet-500/10', border: 'border-violet-500/20' },
   { name: 'Grafana Stack', category: 'Observability', color: 'text-amber-300', bg: 'bg-amber-500/10', border: 'border-amber-500/20' },
-  { name: 'GitHub Actions', category: 'CI/CD', color: 'text-emerald-300', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20' },
-  { name: 'Harbor', category: 'Registry', color: 'text-sky-300', bg: 'bg-sky-500/10', border: 'border-sky-500/20' },
-  { name: 'Istio', category: 'Mesh', color: 'text-violet-300', bg: 'bg-violet-500/10', border: 'border-violet-500/20' },
-  { name: 'OpenTelemetry', category: 'Tracing', color: 'text-pink-300', bg: 'bg-pink-500/10', border: 'border-pink-500/20' },
 ]
 
 const itemVariants = {
@@ -143,7 +144,7 @@ export function Architecture() {
                     {layer.name}
                   </h3>
                 </div>
-                <p className="text-slate-600 text-xs">{layer.sub}</p>
+                <p className="text-slate-400 text-xs">{layer.sub}</p>
               </div>
 
               {/* Tools row */}
@@ -160,7 +161,7 @@ export function Architecture() {
                         <p className="text-white text-xs font-medium leading-none">
                           {tool.name}
                         </p>
-                        <p className="text-slate-600 text-[10px] leading-none mt-0.5 hidden sm:block">
+                        <p className="text-slate-400 text-[10px] leading-none mt-0.5 hidden sm:block">
                           {tool.desc}
                         </p>
                       </div>
@@ -198,7 +199,7 @@ export function Architecture() {
                 <span className={`font-semibold text-sm ${tech.color}`}>
                   {tech.name}
                 </span>
-                <span className="text-slate-600 text-[10px]">{tech.category}</span>
+                <span className="text-slate-400 text-[10px]">{tech.category}</span>
               </motion.div>
             ))}
           </motion.div>
