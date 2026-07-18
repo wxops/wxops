@@ -7,8 +7,8 @@ import {
   MousePointerClick,
   BookOpen,
   GitMerge,
-  FileCode2,
-  Eye,
+  ShieldCheck,
+  Bug,
   CheckCircle2,
 } from 'lucide-react'
 
@@ -17,85 +17,85 @@ const features = [
     icon: KeyRound,
     title: 'Universal Identity',
     description:
-      'One SSO integration to rule them all. Connect Okta, Azure AD, GitHub, or any OIDC/SAML provider in minutes. Every service, every team, one identity.',
-    evidence: 'Zero unauthorized access incidents',
-    evidenceTag: 'Security Win',
+      'One Pinniped-issued OIDC token works for the portal, kubectl, and CI — no second login, no separate kubeconfig ceremony, no service accounts to rotate. Access control is native Kubernetes RBAC, derived straight from your identity provider\'s groups.',
+    evidence: 'No portal permission system — Kubernetes RBAC is the source of truth',
+    evidenceTag: 'Architecture Win',
     color: 'from-indigo-500/15 to-indigo-600/5',
     border: 'border-indigo-500/25',
     iconBg: 'bg-indigo-500/15',
     iconColor: 'text-indigo-400',
     tagColor: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/20',
-    checks: ['Okta, Azure AD, LDAP, GitHub', 'OIDC & SAML 2.0', 'MFA out of the box', 'Role sync from IdP'],
+    checks: ['Pinniped — Kubernetes-native OIDC', 'One token: portal + kubectl + CI', 'RBAC derived from IdP groups', 'Nothing stored, nothing to drift'],
   },
   {
     icon: MousePointerClick,
     title: 'One-Click Onboarding',
     description:
-      "New developer? Pick a Golden Path template, fill in a name, click create. Your service scaffold, pipeline, secrets, and Kubernetes namespace are ready in < 5 minutes.",
-    evidence: '2 weeks → 2 hours onboarding',
+      'Fill in an app name, pick a Golden Path template, and the portal creates your Gitea repo, writes empty Vault secrets, and opens a gitops-infra pull request. Merge it and ArgoCD + Crossplane take it from there.',
+    evidence: 'No platform ticket, no YAML hand-editing',
     evidenceTag: 'Speed Win',
     color: 'from-purple-500/15 to-purple-600/5',
     border: 'border-purple-500/25',
     iconBg: 'bg-purple-500/15',
     iconColor: 'text-purple-400',
     tagColor: 'bg-purple-500/10 text-purple-300 border-purple-500/20',
-    checks: ['Service scaffold from templates', 'Namespace + RBAC auto-provisioned', 'Secrets injected via Vault', 'Pipeline wired automatically'],
+    checks: ['Gitea repo + CI pipeline scaffolded', 'Vault secrets pre-provisioned', 'gitops-infra PR opened automatically', 'ArgoCD sync → Crossplane provisions the app'],
   },
   {
     icon: BookOpen,
     title: 'Service Catalog',
     description:
-      'A living, searchable catalog of every internal service, API, library, and resource. Browse dependencies, find owners, and deploy with one click.',
-    evidence: '500+ self-service actions/month',
+      'A searchable registry of every service, API, and resource — read straight from Backstage-compatible YAML in your gitops-infra repo. No database, no plugin server: the portal caches for five minutes and invalidates instantly on a Gitea push webhook.',
+    evidence: 'No Backstage runtime — Git is the catalog',
     evidenceTag: 'Productivity Win',
     color: 'from-cyan-500/15 to-cyan-600/5',
     border: 'border-cyan-500/25',
     iconBg: 'bg-cyan-500/15',
     iconColor: 'text-cyan-400',
     tagColor: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/20',
-    checks: ['Powered by Backstage', 'Auto-discovered services', 'Owner + runbook links', 'Dependency graph view'],
+    checks: ['Backstage-compatible entity schema', 'Client-side FlexSearch — no round-trip', 'Owner, lifecycle & dependency graph per entity', 'Webhook-driven cache invalidation', 'RFC / ADR / Runbook docs entities, rendered from Gitea Markdown'],
   },
   {
     icon: GitMerge,
     title: 'Automated Pipelines',
     description:
-      'Pre-built CI/CD pipelines with SAST, container scanning, and automated test gates. Push code, the platform handles the rest. Humans approve, machines execute.',
-    evidence: '15x increase in deploy frequency',
+      'Push to Gitea and the pipeline runs on self-hosted Gitea Actions. ArgoCD syncs the GitOps overlay, Crossplane expands the tenant app, and the ArgoCD Image Updater keeps image tags current — dev auto-syncs, staging and production wait on a manual gate.',
+    evidence: 'Auto-sync in dev, manual gate for staging & prod',
     evidenceTag: 'Velocity Win',
     color: 'from-violet-500/15 to-violet-600/5',
     border: 'border-violet-500/25',
     iconBg: 'bg-violet-500/15',
     iconColor: 'text-violet-400',
     tagColor: 'bg-violet-500/10 text-violet-300 border-violet-500/20',
-    checks: ['GitHub Actions & ArgoCD', 'SAST + container scanning', 'Canary & blue/green deploy', 'GitOps with auto-rollback'],
+    checks: ['Gitea Actions — self-hosted CI', 'ArgoCD GitOps sync + Crossplane provisioning', 'Image tags managed by ArgoCD Image Updater', 'Role-gated promotion past experimental'],
   },
   {
-    icon: FileCode2,
-    title: 'Policy as Code',
+    icon: ShieldCheck,
+    title: 'GitOps-Only, Read-Only by Design',
     description:
-      'OPA and Conftest policies enforce security, compliance, and best practices on every deploy. Automated audit trails, zero manual checklist.',
-    evidence: '100% automated compliance checks',
+      'The portal never writes to a Kubernetes API — every configuration change is a reviewable Gitea pull request. Vault access is write-only (no reads, no deletes), deletes are platform-team-only, and Kyverno policies enforce network isolation and quotas automatically on every tenant namespace.',
+    evidence: 'Every change is a Git commit with a reviewer',
     evidenceTag: 'Compliance Win',
     color: 'from-amber-500/15 to-amber-600/5',
     border: 'border-amber-500/25',
     iconBg: 'bg-amber-500/15',
     iconColor: 'text-amber-400',
     tagColor: 'bg-amber-500/10 text-amber-300 border-amber-500/20',
-    checks: ['OPA / Conftest policies', 'SOC2 & ISO27001 ready', 'Automated audit evidence', 'Drift detection built-in'],
+    checks: ['Portal never writes to any cluster API', 'Vault: create/update only — no reads, no deletes', 'Kyverno auto-provisions network policy + quotas', 'Every write logged for audit'],
   },
   {
-    icon: Eye,
-    title: 'End-to-End Observability',
+    icon: Bug,
+    title: 'Darlane — On-Demand Debug Pods',
     description:
-      'Logs, metrics, and distributed traces pre-configured on every new service. Grafana dashboards, Prometheus alerts, and Jaeger tracing — zero config.',
-    evidence: 'MTTR reduced by 83%',
-    evidenceTag: 'Reliability Win',
+      'Provision a parallel debug pod alongside your live deployment — same namespace, same secrets, same environment. Stream local file changes straight into the running pod and get a real exec session, without touching the main workload.',
+    evidence: 'Real exec session, zero blast radius on the live pod',
+    evidenceTag: 'Inner-Loop Win',
     color: 'from-emerald-500/15 to-emerald-600/5',
     border: 'border-emerald-500/25',
     iconBg: 'bg-emerald-500/15',
     iconColor: 'text-emerald-400',
     tagColor: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
-    checks: ['Grafana + Prometheus + Loki', 'OpenTelemetry traces (Jaeger)', 'SLO dashboards auto-generated', 'PagerDuty / Slack alerts wired'],
+    checks: ['Same namespace & secrets as the main pod', 'Live file sync via `wxops darlane sync`', 'Traffic split by weight or header, dev-first', 'Role-gated for staging & production'],
   },
 ]
 
@@ -135,8 +135,8 @@ export function Features() {
             <span className="text-gradient">Needs</span>
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto text-lg">
-            Six core pillars — each delivering measurable impact. Each backed by
-            real evidence from production deployments.
+            Six core capabilities — each grounded in how the platform actually
+            works, not marketing math.
           </p>
         </motion.div>
 
@@ -192,8 +192,7 @@ export function Features() {
                 <div className={`pt-4 border-t border-white/[0.06] flex items-center gap-2`}>
                   <div className={`w-1.5 h-1.5 rounded-full ${f.iconBg} ${f.iconColor} dot-active`} />
                   <span className="text-xs text-slate-500">
-                    Result:{' '}
-                    <span className={`font-semibold ${f.iconColor}`}>{f.evidence}</span>
+                    {f.evidence}
                   </span>
                 </div>
               </motion.div>

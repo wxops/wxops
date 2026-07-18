@@ -159,7 +159,7 @@ export function GoldenPath() {
                     className={`relative flex flex-col items-center p-5 rounded-2xl bg-gradient-to-b ${step.color} border ${step.border} glass-hover group cursor-default`}
                   >
                     {/* Step number */}
-                    <span className="absolute -top-2.5 -right-2.5 w-5 h-5 bg-[#050308] border border-white/10 rounded-full text-[10px] font-bold text-slate-500 flex items-center justify-center">
+                    <span className="absolute -top-2.5 -right-2.5 w-5 h-5 bg-[#282a36] border border-white/10 rounded-full text-[10px] font-bold text-slate-500 flex items-center justify-center">
                       {i + 1}
                     </span>
 
@@ -196,14 +196,14 @@ export function GoldenPath() {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             {[
-              { before: '3–5 days', after: '< 15 min', label: 'New service bootstrapped' },
-              { before: '2 weeks', after: '< 2 hours', label: 'Developer onboarding' },
-              { before: '60+ steps', after: '0 manual steps', label: 'Security compliance' },
+              { before: 'Platform ticket + hand-edited YAML', after: 'One portal form', label: 'New service bootstrap' },
+              { before: 'Second login for kubectl', after: 'One Pinniped token', label: 'Cluster access' },
+              { before: 'Chase approvals in Slack', after: 'Role-gated promotion panel', label: 'Staging & production promotion' },
             ].map((item) => (
               <div key={item.label} className="space-y-2">
                 <div className="flex items-center justify-center gap-3 text-lg font-bold">
                   <span className="text-slate-500 line-through text-base">{item.before}</span>
-                  <span className="text-slate-600">→</span>
+                  <span className="text-slate-400">→</span>
                   <span className="text-gradient">{item.after}</span>
                 </div>
                 <p className="text-sm text-slate-500">{item.label}</p>

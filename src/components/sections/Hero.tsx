@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useCallback } from 'react'
-import { motion } from 'framer-motion'
-import { ArrowRight, Zap, ShieldCheck, Layers } from 'lucide-react'
+import { motion, useInView } from 'framer-motion'
+import { ArrowRight, Zap, ShieldCheck, Layers, X, CheckCircle2 } from 'lucide-react'
 
 /* ──────────────────────────────────────────────
    Particle Network Canvas
@@ -28,7 +28,7 @@ function ParticleCanvas() {
       radius: number; color: string; alpha: number
     }
 
-    const COLORS = ['#6366f1', '#8b5cf6', '#06b6d4', '#a78bfa']
+    const COLORS = ['#bd93f9', '#ff79c6', '#8be9fd', '#50fa7b']
     const COUNT = typeof window !== 'undefined' && window.innerWidth < 768 ? 40 : 80
 
     const particles: Particle[] = Array.from({ length: COUNT }, () => ({
@@ -70,7 +70,7 @@ function ParticleCanvas() {
             ctx!.beginPath()
             ctx!.moveTo(particles[i].x, particles[i].y)
             ctx!.lineTo(particles[j].x, particles[j].y)
-            ctx!.strokeStyle = `rgba(99, 102, 241, ${0.18 * (1 - dist / 130)})`
+            ctx!.strokeStyle = `rgba(189, 147, 249, ${0.18 * (1 - dist / 130)})`
             ctx!.lineWidth = 0.6
             ctx!.stroke()
           }
@@ -95,79 +95,19 @@ function ParticleCanvas() {
 }
 
 /* ──────────────────────────────────────────────
-   Animated counter hook
-──────────────────────────────────────────────── */
-function useCountUp(target: number, decimals = 0) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const startedRef = useRef(false)
-
-  useEffect(() => {
-    const node = ref.current
-    if (!node) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !startedRef.current) {
-          startedRef.current = true
-          const duration = 2000
-          const startTime = performance.now()
-
-          function tick(now: number) {
-            const elapsed = now - startTime
-            const progress = Math.min(elapsed / duration, 1)
-            const eased = 1 - Math.pow(1 - progress, 3)
-            const current = target * eased
-            if (node) node.textContent = decimals > 0 ? current.toFixed(decimals) : Math.floor(current).toString()
-            if (progress < 1) requestAnimationFrame(tick)
-          }
-
-          requestAnimationFrame(tick)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.5 }
-    )
-
-    observer.observe(node)
-    return () => observer.disconnect()
-  }, [target, decimals])
-
-  return ref
-}
-
-function StatCounter({
-  value,
-  suffix = '',
-  prefix = '',
-  decimals = 0,
-  label,
-}: {
-  value: number
-  suffix?: string
-  prefix?: string
-  decimals?: number
-  label: string
-}) {
-  const ref = useCountUp(value, decimals)
-  return (
-    <div className="glass rounded-2xl p-6 text-center">
-      <div className="text-3xl md:text-4xl font-bold text-white mb-1">
-        {prefix}
-        <span ref={ref}>0</span>
-        {suffix}
-      </div>
-      <div className="text-sm text-slate-500">{label}</div>
-    </div>
-  )
-}
-
-/* ──────────────────────────────────────────────
    Hero Section
 ──────────────────────────────────────────────── */
 const badges = [
   { icon: Zap, text: 'Platform Engineering' },
   { icon: Layers, text: 'Golden Path' },
-  { icon: ShieldCheck, text: 'Zero-Trust IDP' },
+  { icon: ShieldCheck, text: 'GitOps-Native' },
+]
+
+const comparisons = [
+  { before: 'Node.js + Postgres + plugins', after: 'Single Go binary' },
+  { before: 'Separate login per tool', after: 'One Pinniped token' },
+  { before: 'Config drifts, manual clicks', after: '100% GitOps PRs' },
+  { before: 'Plugin ecosystem to maintain', after: 'Zero plugins' },
 ]
 
 const stagger = {
@@ -176,10 +116,13 @@ const stagger = {
 }
 
 export function Hero() {
+  const compareRef = useRef(null)
+  const compareInView = useInView(compareRef, { once: true, margin: '-100px' })
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050308]"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#282a36]"
     >
       {/* Gradient orbs */}
       <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-indigo-600/10 blur-[120px] pointer-events-none" />
@@ -242,9 +185,9 @@ export function Hero() {
               />
               <defs>
                 <linearGradient id="underline-gradient" x1="0" y1="0" x2="300" y2="0">
-                  <stop offset="0%" stopColor="#6366f1" />
-                  <stop offset="50%" stopColor="#8b5cf6" />
-                  <stop offset="100%" stopColor="#06b6d4" />
+                  <stop offset="0%" stopColor="#bd93f9" />
+                  <stop offset="50%" stopColor="#ff79c6" />
+                  <stop offset="100%" stopColor="#8be9fd" />
                 </linearGradient>
               </defs>
             </svg>
@@ -271,7 +214,7 @@ export function Hero() {
           className="flex flex-col sm:flex-row gap-4 mb-20"
         >
           <a
-            href="/feedback"
+            href="/enterprise"
             className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl text-white font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:opacity-95 transition-all duration-200"
           >
             Get Early Access
@@ -279,17 +222,54 @@ export function Hero() {
           </a>
         </motion.div>
 
-        {/* Stat counters */}
+        {/* Comparison strip — vs. a typical IDP */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl"
+          ref={compareRef}
+          initial={{ opacity: 0, y: 40 }}
+          animate={compareInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }}
+          className="w-full max-w-3xl"
         >
-          <StatCounter value={90} suffix="%" label="Faster Onboarding" />
-          <StatCounter value={50} suffix="+" label="Services Integrated" />
-          <StatCounter value={15} suffix="x" label="Deploy Frequency" />
-          <StatCounter value={99.9} suffix="%" decimals={1} label="Platform Uptime" />
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-8">
+            <span className="hidden sm:block h-px flex-1 max-w-20 bg-gradient-to-r from-transparent to-white/20" />
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight text-center sm:whitespace-nowrap">
+              <span className="text-gradient">W&apos;xOps</span> vs. a Typical IDP
+            </h2>
+            <span className="hidden sm:block h-px flex-1 max-w-20 bg-gradient-to-l from-transparent to-white/20" />
+          </div>
+
+          <motion.div
+            variants={stagger.container}
+            initial="hidden"
+            animate={compareInView ? 'show' : 'hidden'}
+            className="flex flex-col gap-3"
+          >
+            {comparisons.map((row) => (
+              <motion.div
+                key={row.after}
+                variants={stagger.item}
+                className="group flex items-center gap-4 sm:gap-5 px-5 sm:px-7 py-4 sm:py-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.05] hover:border-indigo-500/30 transition-all duration-200"
+              >
+                <div className="flex items-center gap-2.5 flex-1 min-w-0">
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-rose-500/60 flex-shrink-0" />
+                  <span className="text-sm sm:text-lg text-slate-500 line-through decoration-slate-600 truncate">
+                    {row.before}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex-shrink-0 shadow-md shadow-indigo-500/30 group-hover:scale-110 transition-transform">
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                </div>
+
+                <div className="flex items-center gap-2.5 flex-1 min-w-0 justify-end">
+                  <span className="text-sm sm:text-lg text-white font-bold truncate">
+                    {row.after}
+                  </span>
+                  <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400 flex-shrink-0" />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
 

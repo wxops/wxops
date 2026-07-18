@@ -2,12 +2,12 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ArrowRight, Github, Layers, Zap } from 'lucide-react'
+import { ArrowRight, Layers, Zap } from 'lucide-react'
 
 const benefits = [
   'Onboard any developer in < 2 hours',
   'Production-ready templates for every stack',
-  'Zero-trust security baked in, not bolted on',
+  'Every change is a reviewable Git PR — never a direct write',
   'Full observability from day one',
   'Self-service infrastructure — no ticket queue',
   'Open source, no vendor lock-in',
@@ -97,20 +97,11 @@ export function CTA() {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
-              href="/feedback"
+              href="/enterprise"
               className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl text-white font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:opacity-95 transition-all"
             >
               Get Early Access
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
-              href="https://github.com/wxops"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 glass-hover rounded-xl text-white font-semibold"
-            >
-              <Github className="w-4 h-4" />
-              View on GitHub
             </a>
           </motion.div>
 
@@ -119,7 +110,7 @@ export function CTA() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.9 }}
-            className="mt-6 text-xs text-slate-600"
+            className="mt-6 text-xs text-slate-400"
           >
             Open source · MIT License · No vendor lock-in · Self-hosted or cloud
           </motion.p>

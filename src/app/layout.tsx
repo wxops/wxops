@@ -64,7 +64,7 @@ export default function RootLayout({
       <head>
         <Script strategy="afterInteractive" src="https://analytics.xeusnguyen.xyz/script.js" data-website-id="6c2142a0-ff3f-4c50-82d3-9936b776de74" />
       </head>
-      <body className="bg-[#050308] text-slate-100 antialiased">{children}</body>
+      <body className="bg-[#282a36] text-slate-100 antialiased">{children}</body>
     </html>
   )
 }
