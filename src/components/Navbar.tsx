@@ -9,7 +9,8 @@ const navLinks = [
   { label: 'Golden Path', href: '/#golden-path' },
   { label: 'Features', href: '/#features' },
   { label: 'Architecture', href: '/#architecture' },
-  { label: 'Enterprise', href: '/enterprise' },
+  { label: 'Talk to the Maintainer', href: '/demo' },
+  { label: 'Release Notes', href: 'https://docs.wxops.cloud/release-notes', external: true },
   { label: 'Docs', href: 'https://docs.wxops.cloud', external: true },
 ]
 
@@ -87,10 +88,10 @@ export function Navbar() {
               GitHub <ExternalLink className="w-3.5 h-3.5" />
             </a>
             <a
-              href="/enterprise"
+              href="/demo"
               className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg text-white hover:opacity-90 transition-opacity"
             >
-              Get Early Access
+              Try It With Me
             </a>
           </motion.div>
 
@@ -128,11 +129,20 @@ export function Navbar() {
                 </a>
               ))}
               <a
-                href="/enterprise"
+                href="https://github.com/wxops"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-1.5 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/[0.06] rounded-lg transition-all"
+              >
+                GitHub <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="/demo"
                 onClick={() => setMobileOpen(false)}
                 className="mt-2 px-4 py-3 text-center font-medium bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg text-white"
               >
-                Get Early Access
+                Try It With Me
               </a>
             </div>
           </motion.div>

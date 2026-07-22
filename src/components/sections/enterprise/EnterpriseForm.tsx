@@ -220,7 +220,7 @@ export function EnterpriseForm() {
           teamSize: form.teamSize || '—',
           currentTooling: form.currentTooling || '—',
           message: form.message.trim() || '(not specified)',
-          _subject: `[W'xOps Enterprise] Demo Request — ${form.company.trim() || form.name.trim()}`,
+          _subject: `[W'xOps Demo] Request — ${form.company.trim() || form.name.trim()}`,
         }),
       })
 
@@ -249,10 +249,10 @@ export function EnterpriseForm() {
           className="text-center mb-8"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-            Request a Demo
+            Let&apos;s Talk
           </h2>
           <p className="text-slate-500 text-sm max-w-md mx-auto">
-            Tell us about your team and what you&apos;d like to see — we&apos;ll
+            Tell me about your team and what you&apos;d like to see — I&apos;ll
             come to the call prepared to answer it, not pitch a deck.
           </p>
         </motion.div>
@@ -338,7 +338,7 @@ export function EnterpriseForm() {
 
               <div>
                 <label htmlFor="ent-message" className="block text-xs font-medium text-slate-400 mb-1.5">
-                  What would you like us to cover? <span className="text-slate-400">(optional, but helps us prepare)</span>
+                  What would you like me to cover? <span className="text-slate-400">(optional, but helps me prepare)</span>
                 </label>
                 <textarea
                   id="ent-message"
@@ -364,11 +364,11 @@ export function EnterpriseForm() {
                 className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl text-white font-semibold text-sm shadow-lg shadow-indigo-500/20 hover:opacity-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 <Send className="w-4 h-4" />
-                {status === 'submitting' ? 'Sending…' : 'Request a Demo'}
+                {status === 'submitting' ? 'Sending…' : 'Send Message'}
               </button>
 
               <p className="text-center text-[11px] text-slate-400">
-                We reply personally — typically within 1–2 business days.
+                I reply personally — typically within 1–2 business days.
               </p>
             </form>
           )}
@@ -393,8 +393,8 @@ function SuccessCard({ onReset }: { onReset: () => void }) {
         Request sent
       </h3>
       <p className="text-slate-400 text-sm max-w-sm mx-auto mb-5 leading-relaxed">
-        Thanks for reaching out — your demo request landed in our inbox and
-        we&apos;ll get back to you personally, typically within 1–2 business days.
+        Thanks for reaching out — your message landed in my inbox and
+        I&apos;ll get back to you personally, typically within 1–2 business days.
       </p>
       <button
         onClick={onReset}

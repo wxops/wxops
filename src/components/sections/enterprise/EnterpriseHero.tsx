@@ -29,7 +29,7 @@ export function EnterpriseHero() {
             W&apos;xOps IDP
           </a>
           <span>/</span>
-          <span className="text-slate-400">Enterprise</span>
+          <span className="text-slate-400">Demo</span>
         </motion.div>
 
         {/* Badge */}
@@ -40,7 +40,7 @@ export function EnterpriseHero() {
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium mb-6"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 dot-active" />
-          For Platform, Security &amp; Engineering Leadership
+          Solo-Maintained, Actively Shipping
         </motion.div>
 
         {/* Headline */}
@@ -61,9 +61,9 @@ export function EnterpriseHero() {
           className="text-slate-400 text-lg max-w-2xl mb-10 leading-relaxed"
         >
           Self-hosted, single binary, no database to patch or breach. Every
-          configuration change is a reviewable Git PR. Request a demo and
-          we&apos;ll walk through the architecture, security model, and
-          deployment plan for your team.
+          configuration change is a reviewable Git PR. Tell me about your use
+          case and I&apos;ll personally walk you through the architecture,
+          security model, and deployment plan.
         </motion.p>
 
         {/* CTA row */}
@@ -77,7 +77,7 @@ export function EnterpriseHero() {
             href="#enterprise-form"
             className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl text-white font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:opacity-95 transition-all duration-200"
           >
-            Request a Demo
+            Try It With Me
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <a

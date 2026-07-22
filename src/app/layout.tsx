@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'W\'xOps IDP — Internal Developer Portal',
   description:
-    'A Platform Engineering showcase: The Golden Path to modern cloud-native development. One identity, one catalog, zero friction.',
+    'MVP live: one identity, one catalog, one golden path. Open source, self-hosted, and actively shipping.',
   keywords: [
     'Internal Developer Portal',
     'Platform Engineering',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "W'xOps IDP — Internal Developer Portal",
     description:
-      'Platform Engineering done right. Onboard in minutes, deploy with confidence, scale without friction.',
+      'MVP live: one identity, one catalog, one golden path. Open source, self-hosted, and actively shipping.',
     type: 'website',
     url: siteUrl,
     siteName: "W'xOps IDP",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "W'xOps IDP — Internal Developer Portal",
     description:
-      'Platform Engineering done right. Onboard in minutes, deploy with confidence, scale without friction.',
+      'MVP live: one identity, one catalog, one golden path. Open source, self-hosted, and actively shipping.',
     images: ['/thumbnail.png'],
   },
 }

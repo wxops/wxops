@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useCallback } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { ArrowRight, Zap, ShieldCheck, Layers, X, CheckCircle2 } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { ArrowRight, Zap, ShieldCheck, Layers } from 'lucide-react'
 
 /* ──────────────────────────────────────────────
    Particle Network Canvas
@@ -103,22 +103,12 @@ const badges = [
   { icon: ShieldCheck, text: 'GitOps-Native' },
 ]
 
-const comparisons = [
-  { before: 'Node.js + Postgres + plugins', after: 'Single Go binary' },
-  { before: 'Separate login per tool', after: 'One Pinniped token' },
-  { before: 'Config drifts, manual clicks', after: '100% GitOps PRs' },
-  { before: 'Plugin ecosystem to maintain', after: 'Zero plugins' },
-]
-
 const stagger = {
   container: { hidden: {}, show: { transition: { staggerChildren: 0.12 } } },
   item: { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] } } },
 }
 
 export function Hero() {
-  const compareRef = useRef(null)
-  const compareInView = useInView(compareRef, { once: true, margin: '-100px' })
-
   return (
     <section
       id="hero"
@@ -201,9 +191,9 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.55 }}
           className="text-lg md:text-xl text-slate-400 max-w-2xl mb-10 leading-relaxed"
         >
-          An Internal Developer Portal that eliminates friction, accelerates delivery,
-          and gives every engineer the power to ship with confidence — all via{' '}
-          <span className="text-indigo-300 font-medium">one unified platform</span>.
+          An Internal Developer Portal built around one identity, one catalog,
+          and a working golden path — self-hosted, open source, and{' '}
+          <span className="text-indigo-300 font-medium">MVP live today</span>.
         </motion.p>
 
         {/* CTA row */}
@@ -214,62 +204,12 @@ export function Hero() {
           className="flex flex-col sm:flex-row gap-4 mb-20"
         >
           <a
-            href="/enterprise"
+            href="/demo"
             className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-xl text-white font-semibold shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:opacity-95 transition-all duration-200"
           >
-            Get Early Access
+            Try It With Me
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
-        </motion.div>
-
-        {/* Comparison strip — vs. a typical IDP */}
-        <motion.div
-          ref={compareRef}
-          initial={{ opacity: 0, y: 40 }}
-          animate={compareInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="w-full max-w-3xl"
-        >
-          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-8">
-            <span className="hidden sm:block h-px flex-1 max-w-20 bg-gradient-to-r from-transparent to-white/20" />
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight text-center sm:whitespace-nowrap">
-              <span className="text-gradient">W&apos;xOps</span> vs. a Typical IDP
-            </h2>
-            <span className="hidden sm:block h-px flex-1 max-w-20 bg-gradient-to-l from-transparent to-white/20" />
-          </div>
-
-          <motion.div
-            variants={stagger.container}
-            initial="hidden"
-            animate={compareInView ? 'show' : 'hidden'}
-            className="flex flex-col gap-3"
-          >
-            {comparisons.map((row) => (
-              <motion.div
-                key={row.after}
-                variants={stagger.item}
-                className="group flex items-center gap-4 sm:gap-5 px-5 sm:px-7 py-4 sm:py-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.05] hover:border-indigo-500/30 transition-all duration-200"
-              >
-                <div className="flex items-center gap-2.5 flex-1 min-w-0">
-                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-rose-500/60 flex-shrink-0" />
-                  <span className="text-sm sm:text-lg text-slate-500 line-through decoration-slate-600 truncate">
-                    {row.before}
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex-shrink-0 shadow-md shadow-indigo-500/30 group-hover:scale-110 transition-transform">
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                </div>
-
-                <div className="flex items-center gap-2.5 flex-1 min-w-0 justify-end">
-                  <span className="text-sm sm:text-lg text-white font-bold truncate">
-                    {row.after}
-                  </span>
-                  <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400 flex-shrink-0" />
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
 

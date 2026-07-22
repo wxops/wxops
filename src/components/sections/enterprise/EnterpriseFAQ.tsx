@@ -27,11 +27,11 @@ const faqs = [
   },
   {
     q: "What does pricing look like?",
-    a: "We haven’t published pricing yet — W’xOps is in early access. Request a demo below and we’ll walk through options based on your team size, cluster footprint, and deployment model.",
+    a: "I haven’t published pricing yet — W’xOps is in early access. Request a call below and I’ll walk you through options based on your team size, cluster footprint, and deployment model.",
   },
   {
     q: "What kind of support do we get?",
-    a: "Direct access to the team building the platform — no ticket queue. Tell us what you’d like covered in the form below and we’ll come to the call prepared to answer it.",
+    a: "Direct access to me — I’m building this solo, so there’s no ticket queue in between. Tell me what you’d like covered in the form below and I’ll come to the call prepared to answer it.",
   },
 ]
 
@@ -54,7 +54,7 @@ export function EnterpriseFAQ() {
         >
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-sm font-medium mb-4">
             <HelpCircle className="w-3.5 h-3.5" />
-            Questions We Get Before a Demo
+            Questions to Expect Before We Talk
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-white">
             Answers, Before You{' '}
@@ -103,7 +103,7 @@ export function EnterpriseFAQ() {
         </div>
 
         <p className="text-center text-xs text-slate-400 mt-8">
-          Have a different question? Ask it directly in the form below — we&apos;ll answer it on the call.
+          Have a different question? Ask it directly in the form below — I&apos;ll answer it on the call.
         </p>
       </div>
     </section>

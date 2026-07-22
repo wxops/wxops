@@ -74,11 +74,11 @@ export function EnterpriseValueProps() {
           className="text-center mb-14"
         >
           <span className="inline-block px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-medium mb-4">
-            Why Enterprises Choose W&apos;xOps
+            The Architecture Decisions Behind It
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Built for Teams That{' '}
-            <span className="text-gradient">Can&apos;t Compromise</span>
+            Built on{' '}
+            <span className="text-gradient">Fewer Moving Parts</span>
           </h2>
         </motion.div>
 

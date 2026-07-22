@@ -28,8 +28,8 @@ through to the [full documentation](https://docs.wxops.cloud).
 ## Contact
 
 Questions, feedback, or interested in running W'xOps for your team? Reach out
-at **contact@wxops.cloud**, or use the demo request form on the
-[Enterprise page](https://wxops.cloud/enterprise).
+at **contact@wxops.cloud**, or use the form on the
+[Talk to the Maintainer page](https://wxops.cloud/demo).
 
 ## License
 

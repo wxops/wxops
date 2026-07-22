@@ -9,8 +9,12 @@ const footerLinks = {
     { label: 'Service Catalog', href: '#features' },
     { label: 'Identity & Access', href: '#features' },
     { label: 'CI/CD Pipelines', href: '#features' },
-    { label: 'Enterprise', href: '/enterprise' },
+    { label: 'Talk to the Maintainer', href: '/demo' },
     { label: 'Docs', href: 'https://docs.wxops.cloud', external: true },
+  ],
+  Project: [
+    { label: 'Release Notes', href: 'https://docs.wxops.cloud/release-notes', external: true },
+    { label: 'Why I Built This', href: 'https://docs.wxops.cloud/blog/why-wxops', external: true },
   ],
   'Open Source': [
     { label: 'Kubernetes', href: 'https://kubernetes.io', external: true },
@@ -84,8 +88,16 @@ export function Footer() {
             © {new Date().getFullYear()} <span className="font-bold">W&apos;xOps. Open source under MIT License.</span>
           </p>
           <p className="text-sm text-slate-400 flex items-center gap-1.5">
-            Built with <Heart className="w-3.5 h-3.5 text-rose-500" /> by
-            W'xOps Team from Vietnam 🇻🇳
+            Built with <Heart className="w-3.5 h-3.5 text-rose-500" /> by{' '}
+            <a
+              href="https://docs.wxops.cloud/blog/authors/xeus"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-slate-200 transition-colors underline underline-offset-2"
+            >
+              Xeus Nguyen
+            </a>
+            , from Vietnam 🇻🇳
           </p>
         </div>
       </div>

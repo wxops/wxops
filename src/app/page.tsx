@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/components/sections/Hero'
+import { WhoThisIsFor } from '@/components/sections/WhoThisIsFor'
 import { GoldenPath } from '@/components/sections/GoldenPath'
 import { Features } from '@/components/sections/Features'
 import { IdentityFlow } from '@/components/sections/IdentityFlow'
@@ -13,6 +14,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#282a36] overflow-x-hidden">
       <Navbar />
       <Hero />
+      <WhoThisIsFor />
       <GoldenPath />
       <Features />
       <IdentityFlow />

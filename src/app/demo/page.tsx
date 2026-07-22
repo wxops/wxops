@@ -7,12 +7,12 @@ import { EnterpriseFAQ } from '@/components/sections/enterprise/EnterpriseFAQ'
 import { EnterpriseForm } from '@/components/sections/enterprise/EnterpriseForm'
 
 export const metadata: Metadata = {
-  title: "Enterprise & Demo Requests — W'xOps IDP",
+  title: "Talk to the Maintainer — W'xOps IDP",
   description:
-    "Self-hosted, single-binary, GitOps-native. Request a demo to see how W'xOps runs inside your own Kubernetes infrastructure.",
+    "Self-hosted, single-binary, GitOps-native. Tell me about your use case and I'll personally walk you through how W'xOps runs inside your own Kubernetes infrastructure.",
 }
 
-export default function EnterprisePage() {
+export default function DemoPage() {
   return (
     <main className="min-h-screen bg-[#282a36] overflow-x-hidden">
       <Navbar />

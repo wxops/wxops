@@ -78,7 +78,7 @@ const principles = [
   },
   {
     title: 'Platform as a Product',
-    desc: 'The platform team treats internal developers as customers. We iterate, collect feedback, and ship improvements continuously.',
+    desc: 'Built by treating internal developers as the customer — feedback shapes what ships next.',
     color: 'from-purple-500/10 to-purple-600/5',
     border: 'border-purple-500/20',
     dot: 'bg-purple-400',
